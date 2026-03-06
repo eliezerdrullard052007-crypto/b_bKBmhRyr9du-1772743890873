@@ -19,19 +19,45 @@ export type PlayerContextType = {
 
 const PlayerContext = React.createContext<PlayerContextType | null>(null)
 
+// Fetch preview_url from Deezer if not available
+async function fetchDeezerPreview(track: VideoItem): Promise<VideoItem> {
+  if (track.preview_url) return track
+  
+  try {
+    const query = encodeURIComponent(`${track.title} ${track.artist}`)
+    const res = await fetch(`/api/search?q=${query}`)
+    const data = await res.json()
+    
+    if (data.items && data.items.length > 0) {
+      const match = data.items[0]
+      return {
+        ...track,
+        preview_url: match.preview_url,
+        thumbnailUrl: match.thumbnailUrl || track.thumbnailUrl,
+      }
+    }
+  } catch {
+    // Silently fail if Deezer lookup fails
+  }
+  
+  return track
+}
+
 export function PlayerProvider({ children }: { children: React.ReactNode }) {
   const [currentTrack, setCurrentTrack] = React.useState<VideoItem | null>(null)
   const [isPlaying, setIsPlaying] = React.useState(false)
   const [volume, setVolume] = React.useState(70)
   const [queue, setQueue] = React.useState<VideoItem[]>([]) // Initialize queue state
 
-  const setTrack = (track: VideoItem) => {
-    setCurrentTrack(track)
+  const setTrack = async (track: VideoItem) => {
+    const trackWithPreview = await fetchDeezerPreview(track)
+    setCurrentTrack(trackWithPreview)
     setQueue([]) // Clear queue when a new track is explicitly set
   }
 
-  const setTrackAndPlay = (track: VideoItem) => {
-    setCurrentTrack(track)
+  const setTrackAndPlay = async (track: VideoItem) => {
+    const trackWithPreview = await fetchDeezerPreview(track)
+    setCurrentTrack(trackWithPreview)
     setIsPlaying(true)
     setQueue([]) // Clear queue when a new track is explicitly set and played
   }
@@ -46,19 +72,17 @@ export function PlayerProvider({ children }: { children: React.ReactNode }) {
     })
   }
 
-  const playNext = () => {
-    setQueue((prev) => {
-      if (prev.length > 0) {
-        const [nextTrack, ...rest] = prev
-        setCurrentTrack(nextTrack)
-        setIsPlaying(true)
-        return rest
-      } else {
-        setCurrentTrack(null)
-        setIsPlaying(false)
-        return []
-      }
-    })
+  const playNext = async () => {
+    if (queue.length > 0) {
+      const [nextTrack, ...rest] = queue
+      const trackWithPreview = await fetchDeezerPreview(nextTrack)
+      setCurrentTrack(trackWithPreview)
+      setIsPlaying(true)
+      setQueue(rest)
+    } else {
+      setCurrentTrack(null)
+      setIsPlaying(false)
+    }
   }
 
   const clearQueue = () => {

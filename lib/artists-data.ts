@@ -26,7 +26,7 @@ export const artists: Artist[] = [
         album: "Un Verano Sin Ti",
         thumbnailUrl: "/abstract-colorful-gradient.png",
         duration_ms: 244000,
-        preview_url: "https://cdns-preview-d.dzcdn.net/stream/c-d7d3c0e4a3a2b0e0d3d0c7a3b2a1c0d7-3.mp3",
+        // preview_url will be fetched from Deezer API
       },
       {
         id: "bb-2",
@@ -35,7 +35,7 @@ export const artists: Artist[] = [
         album: "Un Verano Sin Ti",
         thumbnailUrl: "/abstract-colorful-gradient.png",
         duration_ms: 178000,
-        preview_url: "https://cdns-preview-d.dzcdn.net/stream/c-d7d3c0e4a3a2b0e0d3d0c7a3b2a1c0d7-3.mp3",
+        // preview_url will be fetched from Deezer API
       },
       {
         id: "bb-3",
@@ -44,7 +44,7 @@ export const artists: Artist[] = [
         album: "Un Verano Sin Ti",
         thumbnailUrl: "/abstract-colorful-gradient.png",
         duration_ms: 206000,
-        preview_url: "https://cdns-preview-d.dzcdn.net/stream/c-d7d3c0e4a3a2b0e0d3d0c7a3b2a1c0d7-3.mp3",
+        // preview_url will be fetched from Deezer API
       },
       {
         id: "bb-4",
@@ -53,7 +53,7 @@ export const artists: Artist[] = [
         album: "El Ultimo Tour Del Mundo",
         thumbnailUrl: "/generic-synthwave-album-cover.png",
         duration_ms: 205000,
-        preview_url: "https://cdns-preview-d.dzcdn.net/stream/c-d7d3c0e4a3a2b0e0d3d0c7a3b2a1c0d7-3.mp3",
+        // preview_url will be fetched from Deezer API
       },
       {
         id: "bb-5",
@@ -62,7 +62,7 @@ export const artists: Artist[] = [
         album: "Single",
         thumbnailUrl: "/futuristic-sound-waves.png",
         duration_ms: 206000,
-        preview_url: "https://cdns-preview-d.dzcdn.net/stream/c-d7d3c0e4a3a2b0e0d3d0c7a3b2a1c0d7-3.mp3",
+        // preview_url will be fetched from Deezer API
       },
       {
         id: "bb-6",
@@ -71,7 +71,7 @@ export const artists: Artist[] = [
         album: "Single",
         thumbnailUrl: "/calm-ocean-sunset.png",
         duration_ms: 251000,
-        preview_url: "https://cdns-preview-d.dzcdn.net/stream/c-d7d3c0e4a3a2b0e0d3d0c7a3b2a1c0d7-3.mp3",
+        // preview_url will be fetched from Deezer API
       },
       {
         id: "bb-7",
@@ -80,7 +80,7 @@ export const artists: Artist[] = [
         album: "YHLQMDLG",
         thumbnailUrl: "/abstract-blend.png",
         duration_ms: 191000,
-        preview_url: "https://cdns-preview-d.dzcdn.net/stream/c-d7d3c0e4a3a2b0e0d3d0c7a3b2a1c0d7-3.mp3",
+        // preview_url will be fetched from Deezer API
       },
       {
         id: "bb-8",
@@ -89,7 +89,7 @@ export const artists: Artist[] = [
         album: "El Ultimo Tour Del Mundo",
         thumbnailUrl: "/generic-synthwave-album-cover.png",
         duration_ms: 191000,
-        preview_url: "https://cdns-preview-d.dzcdn.net/stream/c-d7d3c0e4a3a2b0e0d3d0c7a3b2a1c0d7-3.mp3",
+        // preview_url will be fetched from Deezer API
       },
     ],
   },
@@ -108,7 +108,7 @@ export const artists: Artist[] = [
         album: "Emmanuel",
         thumbnailUrl: "/abstract-colorful-gradient.png",
         duration_ms: 309000,
-        preview_url: "https://cdns-preview-d.dzcdn.net/stream/c-d7d3c0e4a3a2b0e0d3d0c7a3b2a1c0d7-3.mp3",
+        // preview_url will be fetched from Deezer API
       },
       {
         id: "anuel-2",
@@ -117,7 +117,7 @@ export const artists: Artist[] = [
         album: "Real Hasta La Muerte",
         thumbnailUrl: "/peaches-album-cover.png",
         duration_ms: 224000,
-        preview_url: "https://cdns-preview-d.dzcdn.net/stream/c-d7d3c0e4a3a2b0e0d3d0c7a3b2a1c0d7-3.mp3",
+        // preview_url will be fetched from Deezer API
       },
       {
         id: "anuel-3",
@@ -126,7 +126,7 @@ export const artists: Artist[] = [
         album: "Real Hasta La Muerte",
         thumbnailUrl: "/peaches-album-cover.png",
         duration_ms: 275000,
-        preview_url: "https://cdns-preview-d.dzcdn.net/stream/c-d7d3c0e4a3a2b0e0d3d0c7a3b2a1c0d7-3.mp3",
+        // preview_url will be fetched from Deezer API
       },
       {
         id: "anuel-4",
@@ -135,7 +135,7 @@ export const artists: Artist[] = [
         album: "Real Hasta La Muerte",
         thumbnailUrl: "/peaches-album-cover.png",
         duration_ms: 247000,
-        preview_url: "https://cdns-preview-d.dzcdn.net/stream/c-d7d3c0e4a3a2b0e0d3d0c7a3b2a1c0d7-3.mp3",
+        // preview_url will be fetched from Deezer API
       },
       {
         id: "anuel-5",
@@ -144,7 +144,7 @@ export const artists: Artist[] = [
         album: "Emmanuel",
         thumbnailUrl: "/abstract-colorful-gradient.png",
         duration_ms: 212000,
-        preview_url: "https://cdns-preview-d.dzcdn.net/stream/c-d7d3c0e4a3a2b0e0d3d0c7a3b2a1c0d7-3.mp3",
+        // preview_url will be fetched from Deezer API
       },
       {
         id: "anuel-6",
@@ -153,7 +153,7 @@ export const artists: Artist[] = [
         album: "Emmanuel",
         thumbnailUrl: "/abstract-colorful-gradient.png",
         duration_ms: 232000,
-        preview_url: "https://cdns-preview-d.dzcdn.net/stream/c-d7d3c0e4a3a2b0e0d3d0c7a3b2a1c0d7-3.mp3",
+        // preview_url will be fetched from Deezer API
       },
     ],
   },
@@ -172,7 +172,7 @@ export const artists: Artist[] = [
         album: "Barrio Fino",
         thumbnailUrl: "/generic-synthwave-album-cover.png",
         duration_ms: 192000,
-        preview_url: "https://cdns-preview-d.dzcdn.net/stream/c-d7d3c0e4a3a2b0e0d3d0c7a3b2a1c0d7-3.mp3",
+        // preview_url will be fetched from Deezer API
       },
       {
         id: "dy-2",
@@ -181,7 +181,7 @@ export const artists: Artist[] = [
         album: "Vida",
         thumbnailUrl: "/calm-ocean-sunset.png",
         duration_ms: 229000,
-        preview_url: "https://cdns-preview-d.dzcdn.net/stream/c-d7d3c0e4a3a2b0e0d3d0c7a3b2a1c0d7-3.mp3",
+        // preview_url will be fetched from Deezer API
       },
       {
         id: "dy-3",
@@ -190,7 +190,7 @@ export const artists: Artist[] = [
         album: "Con Calma",
         thumbnailUrl: "/futuristic-sound-waves.png",
         duration_ms: 193000,
-        preview_url: "https://cdns-preview-d.dzcdn.net/stream/c-d7d3c0e4a3a2b0e0d3d0c7a3b2a1c0d7-3.mp3",
+        // preview_url will be fetched from Deezer API
       },
       {
         id: "dy-4",
@@ -199,7 +199,7 @@ export const artists: Artist[] = [
         album: "Legendaddy",
         thumbnailUrl: "/abstract-blend.png",
         duration_ms: 211000,
-        preview_url: "https://cdns-preview-d.dzcdn.net/stream/c-d7d3c0e4a3a2b0e0d3d0c7a3b2a1c0d7-3.mp3",
+        // preview_url will be fetched from Deezer API
       },
       {
         id: "dy-5",
@@ -208,7 +208,7 @@ export const artists: Artist[] = [
         album: "King Daddy",
         thumbnailUrl: "/abstract-album-art.png",
         duration_ms: 199000,
-        preview_url: "https://cdns-preview-d.dzcdn.net/stream/c-d7d3c0e4a3a2b0e0d3d0c7a3b2a1c0d7-3.mp3",
+        // preview_url will be fetched from Deezer API
       },
       {
         id: "dy-6",
@@ -217,7 +217,7 @@ export const artists: Artist[] = [
         album: "Barrio Fino En Directo",
         thumbnailUrl: "/generic-synthwave-album-cover.png",
         duration_ms: 245000,
-        preview_url: "https://cdns-preview-d.dzcdn.net/stream/c-d7d3c0e4a3a2b0e0d3d0c7a3b2a1c0d7-3.mp3",
+        // preview_url will be fetched from Deezer API
       },
     ],
   },
@@ -236,7 +236,7 @@ export const artists: Artist[] = [
         album: "KG0516",
         thumbnailUrl: "/abstract-colorful-gradient.png",
         duration_ms: 200000,
-        preview_url: "https://cdns-preview-d.dzcdn.net/stream/c-d7d3c0e4a3a2b0e0d3d0c7a3b2a1c0d7-3.mp3",
+        // preview_url will be fetched from Deezer API
       },
       {
         id: "kg-2",
@@ -245,7 +245,7 @@ export const artists: Artist[] = [
         album: "Manana Sera Bonito",
         thumbnailUrl: "/peaches-album-cover.png",
         duration_ms: 212000,
-        preview_url: "https://cdns-preview-d.dzcdn.net/stream/c-d7d3c0e4a3a2b0e0d3d0c7a3b2a1c0d7-3.mp3",
+        // preview_url will be fetched from Deezer API
       },
       {
         id: "kg-3",
@@ -254,7 +254,7 @@ export const artists: Artist[] = [
         album: "Manana Sera Bonito",
         thumbnailUrl: "/peaches-album-cover.png",
         duration_ms: 198000,
-        preview_url: "https://cdns-preview-d.dzcdn.net/stream/c-d7d3c0e4a3a2b0e0d3d0c7a3b2a1c0d7-3.mp3",
+        // preview_url will be fetched from Deezer API
       },
       {
         id: "kg-4",
@@ -263,7 +263,7 @@ export const artists: Artist[] = [
         album: "KG0516",
         thumbnailUrl: "/abstract-colorful-gradient.png",
         duration_ms: 186000,
-        preview_url: "https://cdns-preview-d.dzcdn.net/stream/c-d7d3c0e4a3a2b0e0d3d0c7a3b2a1c0d7-3.mp3",
+        // preview_url will be fetched from Deezer API
       },
       {
         id: "kg-5",
@@ -272,7 +272,7 @@ export const artists: Artist[] = [
         album: "Mamiii",
         thumbnailUrl: "/futuristic-sound-waves.png",
         duration_ms: 209000,
-        preview_url: "https://cdns-preview-d.dzcdn.net/stream/c-d7d3c0e4a3a2b0e0d3d0c7a3b2a1c0d7-3.mp3",
+        // preview_url will be fetched from Deezer API
       },
       {
         id: "kg-6",
@@ -281,7 +281,7 @@ export const artists: Artist[] = [
         album: "Manana Sera Bonito",
         thumbnailUrl: "/peaches-album-cover.png",
         duration_ms: 221000,
-        preview_url: "https://cdns-preview-d.dzcdn.net/stream/c-d7d3c0e4a3a2b0e0d3d0c7a3b2a1c0d7-3.mp3",
+        // preview_url will be fetched from Deezer API
       },
     ],
   },
@@ -300,7 +300,7 @@ export const artists: Artist[] = [
         album: "Vibras",
         thumbnailUrl: "/abstract-colorful-gradient.png",
         duration_ms: 189000,
-        preview_url: "https://cdns-preview-d.dzcdn.net/stream/c-d7d3c0e4a3a2b0e0d3d0c7a3b2a1c0d7-3.mp3",
+        // preview_url will be fetched from Deezer API
       },
       {
         id: "jb-2",
@@ -309,7 +309,7 @@ export const artists: Artist[] = [
         album: "Energia",
         thumbnailUrl: "/generic-synthwave-album-cover.png",
         duration_ms: 228000,
-        preview_url: "https://cdns-preview-d.dzcdn.net/stream/c-d7d3c0e4a3a2b0e0d3d0c7a3b2a1c0d7-3.mp3",
+        // preview_url will be fetched from Deezer API
       },
       {
         id: "jb-3",
@@ -318,7 +318,7 @@ export const artists: Artist[] = [
         album: "Energia",
         thumbnailUrl: "/generic-synthwave-album-cover.png",
         duration_ms: 233000,
-        preview_url: "https://cdns-preview-d.dzcdn.net/stream/c-d7d3c0e4a3a2b0e0d3d0c7a3b2a1c0d7-3.mp3",
+        // preview_url will be fetched from Deezer API
       },
       {
         id: "jb-4",
@@ -327,7 +327,7 @@ export const artists: Artist[] = [
         album: "Energia",
         thumbnailUrl: "/generic-synthwave-album-cover.png",
         duration_ms: 228000,
-        preview_url: "https://cdns-preview-d.dzcdn.net/stream/c-d7d3c0e4a3a2b0e0d3d0c7a3b2a1c0d7-3.mp3",
+        // preview_url will be fetched from Deezer API
       },
       {
         id: "jb-5",
@@ -336,7 +336,7 @@ export const artists: Artist[] = [
         album: "Vibras",
         thumbnailUrl: "/abstract-colorful-gradient.png",
         duration_ms: 196000,
-        preview_url: "https://cdns-preview-d.dzcdn.net/stream/c-d7d3c0e4a3a2b0e0d3d0c7a3b2a1c0d7-3.mp3",
+        // preview_url will be fetched from Deezer API
       },
       {
         id: "jb-6",
@@ -345,7 +345,7 @@ export const artists: Artist[] = [
         album: "Energia",
         thumbnailUrl: "/generic-synthwave-album-cover.png",
         duration_ms: 204000,
-        preview_url: "https://cdns-preview-d.dzcdn.net/stream/c-d7d3c0e4a3a2b0e0d3d0c7a3b2a1c0d7-3.mp3",
+        // preview_url will be fetched from Deezer API
       },
     ],
   },
@@ -364,7 +364,7 @@ export const artists: Artist[] = [
         album: "Aura",
         thumbnailUrl: "/abstract-blend.png",
         duration_ms: 428000,
-        preview_url: "https://cdns-preview-d.dzcdn.net/stream/c-d7d3c0e4a3a2b0e0d3d0c7a3b2a1c0d7-3.mp3",
+        // preview_url will be fetched from Deezer API
       },
       {
         id: "oz-2",
@@ -373,7 +373,7 @@ export const artists: Artist[] = [
         album: "Odisea",
         thumbnailUrl: "/calm-ocean-sunset.png",
         duration_ms: 294000,
-        preview_url: "https://cdns-preview-d.dzcdn.net/stream/c-d7d3c0e4a3a2b0e0d3d0c7a3b2a1c0d7-3.mp3",
+        // preview_url will be fetched from Deezer API
       },
       {
         id: "oz-3",
@@ -382,7 +382,7 @@ export const artists: Artist[] = [
         album: "Odisea",
         thumbnailUrl: "/calm-ocean-sunset.png",
         duration_ms: 254000,
-        preview_url: "https://cdns-preview-d.dzcdn.net/stream/c-d7d3c0e4a3a2b0e0d3d0c7a3b2a1c0d7-3.mp3",
+        // preview_url will be fetched from Deezer API
       },
       {
         id: "oz-4",
@@ -391,7 +391,7 @@ export const artists: Artist[] = [
         album: "Odisea",
         thumbnailUrl: "/calm-ocean-sunset.png",
         duration_ms: 204000,
-        preview_url: "https://cdns-preview-d.dzcdn.net/stream/c-d7d3c0e4a3a2b0e0d3d0c7a3b2a1c0d7-3.mp3",
+        // preview_url will be fetched from Deezer API
       },
       {
         id: "oz-5",
@@ -400,7 +400,7 @@ export const artists: Artist[] = [
         album: "Odisea",
         thumbnailUrl: "/calm-ocean-sunset.png",
         duration_ms: 266000,
-        preview_url: "https://cdns-preview-d.dzcdn.net/stream/c-d7d3c0e4a3a2b0e0d3d0c7a3b2a1c0d7-3.mp3",
+        // preview_url will be fetched from Deezer API
       },
     ],
   },
@@ -419,7 +419,7 @@ export const artists: Artist[] = [
         album: "Vice Versa",
         thumbnailUrl: "/futuristic-sound-waves.png",
         duration_ms: 197000,
-        preview_url: "https://cdns-preview-d.dzcdn.net/stream/c-d7d3c0e4a3a2b0e0d3d0c7a3b2a1c0d7-3.mp3",
+        // preview_url will be fetched from Deezer API
       },
       {
         id: "ra-2",
@@ -428,7 +428,7 @@ export const artists: Artist[] = [
         album: "Afrodisiaco",
         thumbnailUrl: "/abstract-album-art.png",
         duration_ms: 211000,
-        preview_url: "https://cdns-preview-d.dzcdn.net/stream/c-d7d3c0e4a3a2b0e0d3d0c7a3b2a1c0d7-3.mp3",
+        // preview_url will be fetched from Deezer API
       },
       {
         id: "ra-3",
@@ -437,7 +437,7 @@ export const artists: Artist[] = [
         album: "Afrodisiaco",
         thumbnailUrl: "/abstract-album-art.png",
         duration_ms: 184000,
-        preview_url: "https://cdns-preview-d.dzcdn.net/stream/c-d7d3c0e4a3a2b0e0d3d0c7a3b2a1c0d7-3.mp3",
+        // preview_url will be fetched from Deezer API
       },
       {
         id: "ra-4",
@@ -446,7 +446,7 @@ export const artists: Artist[] = [
         album: "Vice Versa",
         thumbnailUrl: "/futuristic-sound-waves.png",
         duration_ms: 203000,
-        preview_url: "https://cdns-preview-d.dzcdn.net/stream/c-d7d3c0e4a3a2b0e0d3d0c7a3b2a1c0d7-3.mp3",
+        // preview_url will be fetched from Deezer API
       },
       {
         id: "ra-5",
@@ -455,7 +455,7 @@ export const artists: Artist[] = [
         album: "Vice Versa",
         thumbnailUrl: "/futuristic-sound-waves.png",
         duration_ms: 227000,
-        preview_url: "https://cdns-preview-d.dzcdn.net/stream/c-d7d3c0e4a3a2b0e0d3d0c7a3b2a1c0d7-3.mp3",
+        // preview_url will be fetched from Deezer API
       },
       {
         id: "ra-6",
@@ -464,7 +464,7 @@ export const artists: Artist[] = [
         album: "Vice Versa",
         thumbnailUrl: "/futuristic-sound-waves.png",
         duration_ms: 189000,
-        preview_url: "https://cdns-preview-d.dzcdn.net/stream/c-d7d3c0e4a3a2b0e0d3d0c7a3b2a1c0d7-3.mp3",
+        // preview_url will be fetched from Deezer API
       },
     ],
   },
@@ -483,7 +483,7 @@ export const artists: Artist[] = [
         album: "Inter Shibuya - La Mafia",
         thumbnailUrl: "/abstract-blend.png",
         duration_ms: 302000,
-        preview_url: "https://cdns-preview-d.dzcdn.net/stream/c-d7d3c0e4a3a2b0e0d3d0c7a3b2a1c0d7-3.mp3",
+        // preview_url will be fetched from Deezer API
       },
       {
         id: "feid-2",
@@ -492,7 +492,7 @@ export const artists: Artist[] = [
         album: "FERXXO VOL 1",
         thumbnailUrl: "/generic-synthwave-album-cover.png",
         duration_ms: 278000,
-        preview_url: "https://cdns-preview-d.dzcdn.net/stream/c-d7d3c0e4a3a2b0e0d3d0c7a3b2a1c0d7-3.mp3",
+        // preview_url will be fetched from Deezer API
       },
       {
         id: "feid-3",
@@ -501,7 +501,7 @@ export const artists: Artist[] = [
         album: "Feliz Cumpleanos Ferxxo",
         thumbnailUrl: "/peaches-album-cover.png",
         duration_ms: 324000,
-        preview_url: "https://cdns-preview-d.dzcdn.net/stream/c-d7d3c0e4a3a2b0e0d3d0c7a3b2a1c0d7-3.mp3",
+        // preview_url will be fetched from Deezer API
       },
       {
         id: "feid-4",
@@ -510,7 +510,7 @@ export const artists: Artist[] = [
         album: "Inter Shibuya - La Mafia",
         thumbnailUrl: "/abstract-blend.png",
         duration_ms: 291000,
-        preview_url: "https://cdns-preview-d.dzcdn.net/stream/c-d7d3c0e4a3a2b0e0d3d0c7a3b2a1c0d7-3.mp3",
+        // preview_url will be fetched from Deezer API
       },
       {
         id: "feid-5",
@@ -519,7 +519,7 @@ export const artists: Artist[] = [
         album: "Inter Shibuya - La Mafia",
         thumbnailUrl: "/abstract-blend.png",
         duration_ms: 267000,
-        preview_url: "https://cdns-preview-d.dzcdn.net/stream/c-d7d3c0e4a3a2b0e0d3d0c7a3b2a1c0d7-3.mp3",
+        // preview_url will be fetched from Deezer API
       },
       {
         id: "feid-6",
@@ -528,7 +528,7 @@ export const artists: Artist[] = [
         album: "MOR",
         thumbnailUrl: "/stay-album-cover.png",
         duration_ms: 345000,
-        preview_url: "https://cdns-preview-d.dzcdn.net/stream/c-d7d3c0e4a3a2b0e0d3d0c7a3b2a1c0d7-3.mp3",
+        // preview_url will be fetched from Deezer API
       },
     ],
   },
