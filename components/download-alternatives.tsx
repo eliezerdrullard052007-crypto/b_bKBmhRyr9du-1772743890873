@@ -21,28 +21,28 @@ export function DownloadAlternatives({ track }: { track: VideoItem }) {
         </DialogHeader>
         <div className="grid gap-3">
           <div className="text-sm text-neutral-400 mb-2">
-            Direct MP3 download from Spotify is not permitted. Here are legal alternatives:
+            Direct MP3 download is not permitted. Here are legal alternatives:
           </div>
 
           <Button
             variant="outline"
             className="justify-start gap-3 bg-transparent"
             onClick={() => {
-              const spotifyUrl =
-                track.spotify_url ||
-                `https://open.spotify.com/search/${encodeURIComponent(`${track.title} ${track.artist}`)}`
-              window.open(spotifyUrl, "_blank")
+              const deezerUrl =
+                track.deezer_url ||
+                `https://www.deezer.com/search/${encodeURIComponent(`${track.title} ${track.artist}`)}`
+              window.open(deezerUrl, "_blank")
             }}
           >
             <ExternalLink className="h-4 w-4" />
-            Open on Spotify (use Spotify Premium for offline)
+            Open on Deezer (use Deezer Premium for offline)
           </Button>
 
           <Button
             variant="outline"
             className="justify-start gap-3 bg-transparent"
             onClick={() => {
-              const text = `${track.title} by ${track.artist}${track.album ? `\nAlbum: ${track.album}` : ""}\n${track.spotify_url || `https://open.spotify.com/search/${encodeURIComponent(`${track.title} ${track.artist}`)}`}`
+              const text = `${track.title} by ${track.artist}${track.album ? `\nAlbum: ${track.album}` : ""}\n${track.deezer_url || `https://www.deezer.com/search/${encodeURIComponent(`${track.title} ${track.artist}`)}`}`
               const blob = new Blob([text], { type: "text/plain" })
               const url = URL.createObjectURL(blob)
               const a = document.createElement("a")
@@ -59,7 +59,7 @@ export function DownloadAlternatives({ track }: { track: VideoItem }) {
           <div className="text-xs text-neutral-500 mt-2">
             For legal MP3 downloads, consider:
             <ul className="list-disc list-inside mt-1 space-y-1">
-              <li>Spotify Premium (offline downloads)</li>
+              <li>Deezer Premium (offline downloads)</li>
               <li>Apple Music (offline playlists)</li>
               <li>Amazon Music Unlimited</li>
               <li>Bandcamp, SoundCloud Go+ for independent artists</li>
@@ -87,10 +87,10 @@ export function PlaylistDownloadAlternatives({ playlistId }: { playlistId: strin
       "Track List:",
       ...playlist.tracks.map(
         (track, i) =>
-          `${i + 1}. ${track.title} by ${track.artist}${track.album ? ` (${track.album})` : ""}\n   ${track.spotify_url || `https://open.spotify.com/search/${encodeURIComponent(`${track.title} ${track.artist}`)}`}`,
+          `${i + 1}. ${track.title} by ${track.artist}${track.album ? ` (${track.album})` : ""}\n   ${track.deezer_url || `https://www.deezer.com/search/${encodeURIComponent(`${track.title} ${track.artist}`)}`}`,
       ),
       "",
-      "Note: Use Spotify Premium, Apple Music, or other licensed services for offline downloads.",
+      "Note: Use Deezer Premium, Apple Music, or other licensed services for offline downloads.",
     ].join("\n")
 
     const blob = new Blob([content], { type: "text/plain" })
@@ -128,7 +128,7 @@ export function PlaylistDownloadAlternatives({ playlistId }: { playlistId: strin
             <strong>For legal music downloads:</strong>
             <ul className="list-disc list-inside mt-1 space-y-1">
               <li>
-                <strong>Spotify Premium:</strong> Download playlists for offline use
+                <strong>Deezer Premium:</strong> Download playlists for offline use
               </li>
               <li>
                 <strong>Apple Music:</strong> Download purchased or subscribed music

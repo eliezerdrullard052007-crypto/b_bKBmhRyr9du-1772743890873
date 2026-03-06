@@ -65,7 +65,7 @@ export default function QuotaMonitor() {
 
     // Only alert once per 10% threshold per hour
     if (shouldAlert && (!lastAlert || now - Number.parseInt(lastAlert) > 3600000)) {
-      const message = `Spotify API quota at ${Math.round(usagePercentage)}%`
+      const message = `Deezer API quota at ${Math.round(usagePercentage)}%`
 
       // Toast notification
       toast({

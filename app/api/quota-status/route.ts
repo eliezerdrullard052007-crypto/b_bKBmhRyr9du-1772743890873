@@ -1,63 +1,36 @@
 import { NextResponse } from "next/server"
 
-const SPOTIFY_CLIENT_ID = process.env.SPOTIFY_CLIENT_ID
-const SPOTIFY_CLIENT_SECRET = process.env.SPOTIFY_CLIENT_SECRET
-
+// Deezer API - No authentication required
 export async function GET() {
-  if (!SPOTIFY_CLIENT_ID || !SPOTIFY_CLIENT_SECRET) {
-    // Return a healthy fallback response when credentials are missing
+  try {
+    // Test Deezer API connection with a simple request
+    const response = await fetch("https://api.deezer.com/chart/0/tracks?limit=1")
+
     const now = new Date()
     const resetTime = new Date(now)
     resetTime.setHours(resetTime.getHours() + 1)
-    return NextResponse.json({
-      used: 0,
-      limit: 1000000,
-      resetTime: resetTime.toISOString(),
-      lastUpdated: Date.now(),
-      status: "demo",
-      service: "local",
-    })
-  }
-
-  try {
-    // Test Spotify API connection
-    const response = await fetch("https://accounts.spotify.com/api/token", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-        Authorization: `Basic ${Buffer.from(`${SPOTIFY_CLIENT_ID}:${SPOTIFY_CLIENT_SECRET}`).toString("base64")}`,
-      },
-      body: "grant_type=client_credentials",
-    })
-
-    const now = new Date()
-    const resetTime = new Date(now)
-    resetTime.setHours(resetTime.getHours() + 1) // Spotify tokens expire in 1 hour
 
     if (!response.ok) {
       return NextResponse.json({
         used: 0,
-        limit: 1000000, // Spotify has much higher rate limits
+        limit: 50, // Deezer has 50 requests per 5 seconds limit
         resetTime: resetTime.toISOString(),
         lastUpdated: Date.now(),
         status: "error",
-        service: "spotify",
+        service: "deezer",
       })
     }
 
-    // Spotify doesn't expose quota usage like YouTube, so we'll simulate
-    const estimatedUsage = Math.floor(Math.random() * 1000) + 100
-
     return NextResponse.json({
-      used: estimatedUsage,
-      limit: 1000000, // Spotify has very high rate limits
+      used: 0,
+      limit: 50, // Deezer rate limit
       resetTime: resetTime.toISOString(),
       lastUpdated: Date.now(),
       status: "active",
-      service: "spotify",
+      service: "deezer",
     })
   } catch (error) {
-    console.error("Spotify status check failed:", error)
-    return new NextResponse("Failed to check Spotify API status", { status: 502 })
+    console.error("Deezer status check failed:", error)
+    return new NextResponse("Failed to check Deezer API status", { status: 502 })
   }
 }
