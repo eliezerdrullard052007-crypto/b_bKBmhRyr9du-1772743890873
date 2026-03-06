@@ -61,7 +61,7 @@ export default function ResultsGrid({ query }: Props) {
         // Check if it's a quota error
         if (text.includes("quotaExceeded") || text.includes("quota")) {
           setIsQuotaError(true)
-          setError("YouTube API quota exceeded")
+          setError("API quota exceeded")
         } else {
           setError(text)
         }
@@ -98,9 +98,7 @@ export default function ResultsGrid({ query }: Props) {
   if (error) {
     return (
       <div className="text-sm text-red-400">
-        {error.includes("YOUTUBE_API_KEY")
-          ? "Missing YouTube API key. Add YOUTUBE_API_KEY in your Vercel project settings and redeploy."
-          : error}
+        {error}
       </div>
     )
   }

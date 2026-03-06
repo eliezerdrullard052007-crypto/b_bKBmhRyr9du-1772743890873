@@ -31,7 +31,7 @@ const defaultSettings: QuotaSettings = {
   alertThreshold: 80,
   enableAlerts: true,
   enableNotifications: true,
-  dailyLimit: 1000000, // Default Spotify API quota
+  dailyLimit: 1000000, // Default Deezer API quota (no strict limit)
 }
 
 export default function QuotaMonitor() {
@@ -134,7 +134,7 @@ export default function QuotaMonitor() {
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Activity className="h-4 w-4 text-emerald-500" />
-            <CardTitle className="text-sm">Spotify API Status</CardTitle>
+            <CardTitle className="text-sm">Deezer API Status</CardTitle>
             <Badge variant={getStatusColor() as any} className="text-xs">
               {getStatusText()}
             </Badge>

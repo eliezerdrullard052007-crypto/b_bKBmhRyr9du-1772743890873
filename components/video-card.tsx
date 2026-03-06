@@ -20,8 +20,8 @@ export type VideoItem = {
   album?: string
   duration_ms?: number
   preview_url?: string | null
-  external_urls?: any
-  spotify_url?: string
+  deezer_url?: string
+  artist_id?: number
 }
 
 type Props = {
@@ -36,13 +36,13 @@ export default function VideoCard({ item, className }: Props) {
 
   const fav = isFavorite(item.id)
 
-  const handleOpenSpotify = () => {
-    if (item.spotify_url) {
-      window.open(item.spotify_url, "_blank")
+  const handleOpenDeezer = () => {
+    if (item.deezer_url) {
+      window.open(item.deezer_url, "_blank")
     } else {
-      // Fallback to Spotify search
+      // Fallback to Deezer search
       const searchQuery = encodeURIComponent(`${item.title} ${item.artist}`)
-      window.open(`https://open.spotify.com/search/${searchQuery}`, "_blank")
+      window.open(`https://www.deezer.com/search/${searchQuery}`, "_blank")
     }
   }
 
@@ -120,24 +120,10 @@ export default function VideoCard({ item, className }: Props) {
               Add to queue
             </DropdownMenuItem>
             <DropdownMenuItem onClick={() => setDialogOpen(true)}>Add to playlist</DropdownMenuItem>
-            <DropdownMenuItem onClick={handleOpenSpotify}>
+            <DropdownMenuItem onClick={handleOpenDeezer}>
               <ExternalLink className="h-4 w-4 mr-2" />
-              Open on Spotify
+              Open on Deezer
             </DropdownMenuItem>
-            {item.preview_url && (
-              <DropdownMenuItem
-                onClick={() => {
-                  const audio = new Audio(item.preview_url!)
-                  audio.play().catch(console.error)
-                  toast({
-                    title: "Playing preview",
-                    description: "30-second preview from Spotify",
-                  })
-                }}
-              >
-                Play 30s preview
-              </DropdownMenuItem>
-            )}
             <DropdownMenuItem asChild>
               <div className="w-full">
                 <DownloadAlternatives track={item} />
@@ -146,12 +132,12 @@ export default function VideoCard({ item, className }: Props) {
             <DropdownMenuItem
               onClick={() => {
                 const shareUrl =
-                  item.spotify_url ||
-                  `https://open.spotify.com/search/${encodeURIComponent(`${item.title} ${item.artist}`)}`
+                  item.deezer_url ||
+                  `https://www.deezer.com/search/${encodeURIComponent(`${item.title} ${item.artist}`)}`
                 navigator.clipboard.writeText(shareUrl)
                 toast({
                   title: "Link copied",
-                  description: "Spotify link copied to clipboard.",
+                  description: "Deezer link copied to clipboard.",
                 })
               }}
             >

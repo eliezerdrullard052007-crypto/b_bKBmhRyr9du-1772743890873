@@ -25,9 +25,6 @@ import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle, DialogT
 import { Input } from "@/components/ui/input"
 import Link from "next/link"
 import { motion } from "framer-motion"
-import QuotaMonitor from "./quota-monitor"
-import ApiKeyManagerUI from "./api-key-manager-ui"
-import NowPlayingQueue from "./now-playing-queue"
 
 // Helper component for the animated wave effect
 function AnimatedSidebarLink({ href, children }: { href: string; children: React.ReactNode }) {
@@ -122,30 +119,6 @@ export default function AppSidebar() {
                 </AnimatedSidebarLink>
               </SidebarMenuItem>
             </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
-
-        <SidebarSeparator />
-
-        {/* API Management */}
-        <SidebarGroup>
-          <SidebarGroupContent>
-            <div className="px-2 space-y-3">
-              <QuotaMonitor />
-              <ApiKeyManagerUI />
-            </div>
-          </SidebarGroupContent>
-        </SidebarGroup>
-
-        <SidebarSeparator />
-
-        {/* Now Playing Queue */}
-        <SidebarGroup>
-          <SidebarGroupLabel className="text-xs uppercase tracking-wider text-neutral-400">Queue</SidebarGroupLabel>
-          <SidebarGroupContent>
-            <div className="px-2">
-              <NowPlayingQueue />
-            </div>
           </SidebarGroupContent>
         </SidebarGroup>
 

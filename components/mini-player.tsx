@@ -12,164 +12,122 @@ import AddToPlaylistDialog from "./add-to-playlist"
 import { AnimatePresence, motion } from "framer-motion"
 import { useRecentlyPlayed } from "@/hooks/use-recently-played"
 
-declare global {
-  interface Window {
-    YT?: any
-    onYouTubeIframeAPIReady?: () => void
-  }
-}
-
 export default function MiniPlayer() {
-  const { currentTrack, isPlaying, setIsPlaying, volume, setVolume, playNext, queue } = usePlayer() // Added playNext, queue
+  const { currentTrack, isPlaying, setIsPlaying, volume, setVolume, playNext, queue } = usePlayer()
   const { isFavorite, toggleFavorite } = usePlaylists()
   const { addRecentlyPlayed } = useRecentlyPlayed()
   const fav = currentTrack ? isFavorite(currentTrack.id) : false
 
-  const playerRef = React.useRef<any>(null)
-  const containerRef = React.useRef<HTMLDivElement | null>(null)
+  const audioRef = React.useRef<HTMLAudioElement | null>(null)
   const [ready, setReady] = React.useState(false)
   const [progress, setProgress] = React.useState(0)
   const [duration, setDuration] = React.useState(0)
-  const pollRef = React.useRef<any>(null)
   const [seeking, setSeeking] = React.useState(false)
   const [dialogOpen, setDialogOpen] = React.useState(false)
-  const scriptAppended = React.useRef(false)
 
-  // Defer loading external YouTube script until a track exists to avoid generic cross-origin "Script error."
+  // Create and manage HTML5 Audio element
   React.useEffect(() => {
-    if (typeof window === "undefined") return
-    if (!currentTrack) return
-    if (window.YT && window.YT.Player) return
-    if (scriptAppended.current) return
-    const script = document.createElement("script")
-    script.src = "https://www.youtube.com/iframe_api"
-    script.async = true
-    script.defer = true
-    script.onerror = () => {
-      // Swallow external script errors to avoid noisy "Script error." in preview
-      console.warn("YouTube Iframe API failed to load.")
+    if (!audioRef.current) {
+      audioRef.current = new Audio()
+      audioRef.current.crossOrigin = "anonymous"
     }
-    document.body.appendChild(script)
-    scriptAppended.current = true
-  }, [currentTrack])
 
-  // Create player when API is ready and container exists
-  React.useEffect(() => {
-    if (!containerRef.current) return
-    if (!currentTrack) return
+    const audio = audioRef.current
 
-    function createPlayer() {
-      if (!containerRef.current) return
-      if (playerRef.current) return
-      if (!window?.YT?.Player) return
-      try {
-        playerRef.current = new window.YT.Player(containerRef.current, {
-          height: "0",
-          width: "0",
-          videoId: currentTrack?.id ?? undefined,
-          playerVars: {
-            autoplay: 0,
-            controls: 0,
-            rel: 0,
-            iv_load_policy: 3,
-            playsinline: 1,
-            modestbranding: 1,
-            origin: window.location.origin,
-          },
-          events: {
-            onReady: () => {
-              setReady(true)
-              try {
-                playerRef.current.setVolume?.(volume)
-              } catch {}
-            },
-            onStateChange: (event: any) => {
-              if (event.data === 1) {
-                setIsPlaying(true)
-                // Add track to recently played when it starts playing
-                if (currentTrack) {
-                  addRecentlyPlayed(currentTrack)
-                }
-              } else if (event.data === 2) setIsPlaying(false)
-              else if (event.data === 0) {
-                // Track ended, play next in queue
-                setIsPlaying(false)
-                setProgress(0)
-                playNext() // Play next track
-              }
-            },
-          },
-        })
-      } catch (e) {
-        console.warn("Failed to initialize YT player", e)
+    const handleLoadedMetadata = () => {
+      setReady(true)
+      setDuration(audio.duration || 30) // Deezer previews are 30 seconds
+    }
+
+    const handleTimeUpdate = () => {
+      if (!seeking) {
+        setProgress(audio.currentTime)
       }
     }
 
-    if (window.YT && window.YT.Player) {
-      createPlayer()
-    } else if (!window.onYouTubeIframeAPIReady) {
-      window.onYouTubeIframeAPIReady = () => createPlayer()
-    } else {
-      // If another component set the callback, try immediate create
-      setTimeout(() => createPlayer(), 0)
+    const handleEnded = () => {
+      setIsPlaying(false)
+      setProgress(0)
+      playNext()
     }
-  }, [setIsPlaying, volume, currentTrack, addRecentlyPlayed, playNext]) // Added playNext to dependencies
 
-  // Load/change track
+    const handlePlay = () => {
+      setIsPlaying(true)
+      if (currentTrack) {
+        addRecentlyPlayed(currentTrack)
+      }
+    }
+
+    const handlePause = () => {
+      setIsPlaying(false)
+    }
+
+    const handleCanPlay = () => {
+      setReady(true)
+    }
+
+    audio.addEventListener("loadedmetadata", handleLoadedMetadata)
+    audio.addEventListener("timeupdate", handleTimeUpdate)
+    audio.addEventListener("ended", handleEnded)
+    audio.addEventListener("play", handlePlay)
+    audio.addEventListener("pause", handlePause)
+    audio.addEventListener("canplay", handleCanPlay)
+
+    return () => {
+      audio.removeEventListener("loadedmetadata", handleLoadedMetadata)
+      audio.removeEventListener("timeupdate", handleTimeUpdate)
+      audio.removeEventListener("ended", handleEnded)
+      audio.removeEventListener("play", handlePlay)
+      audio.removeEventListener("pause", handlePause)
+      audio.removeEventListener("canplay", handleCanPlay)
+    }
+  }, [setIsPlaying, playNext, seeking, currentTrack, addRecentlyPlayed])
+
+  // Load track when it changes
   React.useEffect(() => {
-    if (!playerRef.current || !ready || !currentTrack) return
-    try {
-      playerRef.current.loadVideoById(currentTrack.id)
-      if (isPlaying) playerRef.current.playVideo()
-      playerRef.current.setVolume?.(volume)
-    } catch {}
-  }, [currentTrack, ready])
+    if (!audioRef.current || !currentTrack) return
+    
+    const audio = audioRef.current
+    setReady(false)
+    setProgress(0)
+    
+    // Use preview_url from Deezer if available
+    if (currentTrack.preview_url) {
+      audio.src = currentTrack.preview_url
+      audio.load()
+      if (isPlaying) {
+        audio.play().catch(console.error)
+      }
+    }
+  }, [currentTrack])
 
   // Play/pause sync
   React.useEffect(() => {
-    if (!playerRef.current || !ready) return
-    try {
-      if (isPlaying) playerRef.current.playVideo()
-      else playerRef.current.pauseVideo()
-    } catch {}
+    if (!audioRef.current || !ready) return
+    
+    const audio = audioRef.current
+    if (isPlaying) {
+      audio.play().catch(console.error)
+    } else {
+      audio.pause()
+    }
   }, [isPlaying, ready])
 
   // Volume sync
   React.useEffect(() => {
-    if (!playerRef.current || !ready) return
-    try {
-      playerRef.current.setVolume?.(volume)
-    } catch {}
-  }, [volume, ready])
-
-  // Poll progress
-  React.useEffect(() => {
-    if (!playerRef.current || !ready) return
-    clearInterval(pollRef.current)
-    pollRef.current = setInterval(() => {
-      try {
-        const d = playerRef.current.getDuration?.() ?? 0
-        const t = playerRef.current.getCurrentTime?.() ?? 0
-        setDuration(Number.isFinite(d) ? d : 0)
-        if (!seeking) setProgress(Number.isFinite(t) ? t : 0)
-      } catch {}
-    }, 500)
-    return () => clearInterval(pollRef.current)
-  }, [ready, seeking, currentTrack])
+    if (!audioRef.current) return
+    audioRef.current.volume = volume / 100
+  }, [volume])
 
   const onSeekCommit = (val: number[]) => {
-    if (!playerRef.current || !ready) return
-    try {
-      playerRef.current.seekTo(val[0], true)
-      setProgress(val[0])
-      setSeeking(false)
-    } catch {}
+    if (!audioRef.current || !ready) return
+    audioRef.current.currentTime = val[0]
+    setProgress(val[0])
+    setSeeking(false)
   }
 
   return (
     <>
-      {/* Player host off-screen */}
-      <div ref={containerRef} className="absolute -left-[9999px] w-0 h-0" aria-hidden="true" />
       <AnimatePresence>
         {currentTrack ? (
           <motion.div
